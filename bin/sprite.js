@@ -4,7 +4,8 @@ import boxen from "boxen";
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import figlet from "figlet";
-import { spriteImage } from "../src/index.js";
+import pkg from "../src/index.cjs";
+const { generateSpriteAndMetadata } = pkg;
 
 const Sprite = figlet.textSync("Sprite", {
   font: "Ghost",
@@ -39,4 +40,4 @@ const argv = yargs(hideBin(process.argv))
   .help(true)
   .parse();
 
-spriteImage(argv.i, argv.o);
+generateSpriteAndMetadata(argv.i, argv.o);
