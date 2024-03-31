@@ -6,6 +6,7 @@ import { hideBin } from "yargs/helpers";
 import { generateSpriteAndMetadata } from "../src/index.js";
 import { SpriteLogo } from "../src/logo.js";
 import ora from "ora";
+import clear from "clear";
 
 const usage = chalk.green(
   boxen(chalk.green("\n" + SpriteLogo + "\n"), {
@@ -34,6 +35,7 @@ const argv = yargs(hideBin(process.argv))
   .help(true)
   .parse();
 
+clear();
 const spinner = ora("Processing your SVGs...\n").start();
 
 generateSpriteAndMetadata(argv.i, argv.o)
