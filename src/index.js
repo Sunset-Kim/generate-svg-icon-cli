@@ -107,6 +107,7 @@ export async function generateSpriteAndMetadata(inputDir, outputDir) {
         padding: 1,
         borderColor: "green",
         dimBorder: true,
-      })
+      }) +
+      "\n"
   );
 }

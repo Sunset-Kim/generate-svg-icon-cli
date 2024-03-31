@@ -5,6 +5,7 @@ import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import { generateSpriteAndMetadata } from "../src/index.js";
 import { SpriteLogo } from "../src/logo.js";
+import ora from "ora";
 
 const usage = chalk.green(
   boxen(chalk.green("\n" + SpriteLogo + "\n"), {
@@ -13,7 +14,7 @@ const usage = chalk.green(
     dimBorder: true,
   }) +
     "\n" +
-    "Usage: mycli -i <inputDir> -o <outputDir> \n"
+    "Usage: sprite -i <inputDir> -o <outputDir> \n"
 );
 
 const argv = yargs(hideBin(process.argv))
@@ -33,4 +34,16 @@ const argv = yargs(hideBin(process.argv))
   .help(true)
   .parse();
 
-generateSpriteAndMetadata(argv.i, argv.o);
+const spinner = ora("Processing your SVGs...\n").start();
+
+generateSpriteAndMetadata(argv.i, argv.o)
+  .then(() => {
+    spinner.succeed(
+      chalk.greenBright("Sprite and metadata generated successfully\n")
+    );
+  })
+  .catch((error) => {
+    spinner.fail(
+      chalk.redBright("Error occurred while generating sprite and metadata\n")
+    );
+  });
