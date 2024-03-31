@@ -1,8 +1,7 @@
 # 1. “vite” 를 terminal에 입력했을때 생기는 일
 
 > 왜 command not found가 발생할까요?
-
-![Untitled]([https://prod-files-secure.s3.us-west-2.amazonaws.com/b45cdf35-264d-48a9-ad89-e9dff686224a/63d516f9-a075-4008-9d85-4bcc1fe9c7cf/Untitled.png](https://private-user-images.githubusercontent.com/77092632/318283040-75c3252d-f8d9-4c19-9a5a-3617b26604fb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTE5MDA2MTIsIm5iZiI6MTcxMTkwMDMxMiwicGF0aCI6Ii83NzA5MjYzMi8zMTgyODMwNDAtNzVjMzI1MmQtZjhkOS00YzE5LTlhNWEtMzYxN2IyNjYwNGZiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMzElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzMxVDE1NTE1MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU1ZmViOWE3OGI5NmY4ZjM4OTdiYWUyMWJlNWMzYTVkY2EwY2E1ZTYyYmIwOTAxZTcwZDg2MWQ2Yzk5MzQ0ZDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.4cpifqwLN8SLFHUrzPyNZArZ7qGgp-vKyNGArAsXnp4))
+![1](https://github.com/Sunset-Kim/generate-svg-icon-cli/assets/77092632/75c3252d-f8d9-4c19-9a5a-3617b26604fb)
 
 ```jsx
 echo $PATH
@@ -60,17 +59,17 @@ chmod +x node_modules/.bin/hello
 npm run hello
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b45cdf35-264d-48a9-ad89-e9dff686224a/1dd8b7e1-59ca-4179-b6a8-02942bcc9f82/Untitled.png)
+![2](https://github.com/Sunset-Kim/generate-svg-icon-cli/assets/77092632/28f7039c-8ef4-49ec-ae4d-42a3784fcf36)
 
 > 깨달음1. `node_modules/.bin` 안에 스크립트를 추가할 수 있다면 우리는 그 명령어를 사용할 수 있다.
 
 # 2. 깨달음의 확장
 
-![vite library의 package.json](https://prod-files-secure.s3.us-west-2.amazonaws.com/b45cdf35-264d-48a9-ad89-e9dff686224a/a90ac9b2-9057-46bd-b27a-7a1a5702b18d/vite_package.png)
+![3](https://github.com/Sunset-Kim/generate-svg-icon-cli/assets/77092632/e605b2cd-21ee-4670-954f-4554b1b24ad8)
 
 vite library의 package.json
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b45cdf35-264d-48a9-ad89-e9dff686224a/82d1465f-c90b-4b88-bdfd-8c71b97e900a/Untitled.png)
+![4](https://github.com/Sunset-Kim/generate-svg-icon-cli/assets/77092632/cc555d31-3ce8-4105-b6bc-3618795a500c)
 
 라이브러리를 만들 때 **`node_modules/.bin`** 디렉토리에 특정 실행 파일을 추가하고자 한다면, 라이브러리의 **`package.json`** 파일에서 **`bin`** 섹션을 설정하여 이를 구현할 수 있습니다. **`bin`** 속성을 사용하면 npm 패키지를 설치할 때 자동으로 **`node_modules/.bin`**에 명령어를 **링크**해줍니다. 이 방식은 패키지를 전역적으로(install -g) 또는 로컬 프로젝트 내에 설치할 때 유용하게 사용됩니다.
 
