@@ -1,8 +1,11 @@
-const fs = require("fs");
-const path = require("path");
-const SVGSprite = require("svg-sprite");
-const { parseStringPromise } = require("xml2js");
-const { optimize } = require("svgo");
+import fs from "fs";
+import path from "path";
+import SVGSprite from "svg-sprite";
+import chalk from "chalk";
+import { parseStringPromise } from "xml2js";
+import { optimize } from "svgo";
+import boxen from "boxen";
+import { SpriteLogo } from "./logo.js";
 
 async function extractMetadata(filePath) {
   const svgContent = fs.readFileSync(filePath, "utf-8");
@@ -29,7 +32,9 @@ function createSprite(svgFiles, inputDir) {
     const optimizedSvgContents = optimize(svgContent, { path: filePath });
 
     if (optimizedSvgContents.error) {
-      console.error("Failed to optimize SVG:", optimizedSvgContents.error);
+      console.log(
+        chalk.red("Failed to optimize SVG:", optimizedSvgContents.error)
+      );
       return;
     }
 
@@ -44,7 +49,7 @@ function saveSprite(sprite, outputDir) {
   return new Promise((resolve, reject) => {
     sprite.compile((error, result) => {
       if (error) {
-        console.error("Failed to create SVG sprite:", error);
+        console.log(chalk.red("Failed to compile sprite:", error));
         reject(error);
         return;
       }
@@ -67,14 +72,14 @@ function createOutputDir(outputDir) {
   const isExist = fs.existsSync(outputDir);
 
   if (isExist) {
-    console.log("Output directory already exists");
+    console.log(chalk.blue("Output directory already exists"));
     return;
   }
 
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-async function generateSpriteAndMetadata(inputDir, outputDir) {
+export async function generateSpriteAndMetadata(inputDir, outputDir) {
   const svgFiles = fs
     .readdirSync(inputDir)
     .filter((file) => file.endsWith(".svg"));
@@ -94,11 +99,14 @@ async function generateSpriteAndMetadata(inputDir, outputDir) {
     path.join(outputDir, "sprite.json"),
     JSON.stringify(metaInfo, null, 2)
   );
+
   console.log(
-    `SVG Sprite and metadata generated and optimized in ${outputDir}`
+    SpriteLogo +
+      "\n" +
+      boxen(chalk.greenBright("Sprite and metadata generated successfully"), {
+        padding: 1,
+        borderColor: "green",
+        dimBorder: true,
+      })
   );
 }
-
-module.exports = {
-  generateSpriteAndMetadata,
-};

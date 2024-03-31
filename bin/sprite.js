@@ -3,18 +3,11 @@ import chalk from "chalk";
 import boxen from "boxen";
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
-import figlet from "figlet";
-import pkg from "../src/index.cjs";
-const { generateSpriteAndMetadata } = pkg;
-
-const Sprite = figlet.textSync("Sprite", {
-  font: "Ghost",
-  horizontalLayout: "default",
-  verticalLayout: "default",
-});
+import { generateSpriteAndMetadata } from "../src/index.js";
+import { SpriteLogo } from "../src/logo.js";
 
 const usage = chalk.green(
-  boxen(chalk.green("\n" + Sprite + "\n"), {
+  boxen(chalk.green("\n" + SpriteLogo + "\n"), {
     padding: 1,
     borderColor: "green",
     dimBorder: true,
